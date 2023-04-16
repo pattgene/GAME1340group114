@@ -55,21 +55,6 @@ int game1(string playerName) {
     uniform_int_distribution<> dist(starting_num, ending_num);
     int random_num = dist(gen);
 
-    // Set point rewards based on difficulty
-    int points = 0;
-    switch (difficulty) {
-        case EASY:
-            points = 1;
-            break;
-        case NORMAL:
-            points = 3;
-            break;
-        case HARD:
-            points = 5;
-            break;
-    }
-
-
     // Prompt the user to guess the number
     int* guesses = new int[max_wrong_guesses];
     while (!correct_guess && num_wrong_guesses < max_wrong_guesses) {
