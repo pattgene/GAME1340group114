@@ -8,6 +8,7 @@ using namespace std;
 
 int game1(string playerName) {
     int level, starting_num, ending_num, guess_num, num_guesses = 0;
+    int points = 0;
     bool correct_guess = false;
     int num_wrong_guesses = 0;
     const int max_wrong_guesses = 6;
