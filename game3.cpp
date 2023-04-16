@@ -1,5 +1,5 @@
 #include <iostream>
-#include "game1.h"
+#include "game3.h"
 using namespace std;
 
 void display_board(char board[3][3])
