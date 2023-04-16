@@ -25,5 +25,5 @@ int game3() {
               cout << "You lost." << endl;
               return 0;
             }
-        }
+    }
 }
