@@ -21,8 +21,12 @@ void display_hand(vector<string>& hand, int& score) {
     cout << endl << "Your score: " << score << endl;
 }
 
-int game2(std::string playerName) {
-    cout << "Welcome " << playerName << " to game2 'Black Jack!!!!'" <<endl;
+int game2(std::string playername) {
+    cout << "Welcome, " << playername << ", to Game 1." <<endl;
+    cout << "THIS GAME IS BLACK JACK!!!!! " <<endl;
+    cout << "You have to win our CASINO BOSS" <<endl;
+    cout << "Who get close to 21 first, win the game" <<endl;
+    cout << "GOOD LUCK!!!" <<endl;
     vector<Card> deck_copy = deck;
     shuffle_deck(deck_copy);
     vector<string> player_hand;
