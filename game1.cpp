@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int game1(string playerName) {
+int game1(string playername) {
     int level, starting_num, ending_num, guess_num, num_guesses = 0;
     int points = 0;
     bool correct_guess = false;
@@ -16,13 +16,13 @@ int game1(string playerName) {
     bool odd_or_even_hint_given = false;
 
     //Game Instruction
-    cout << "Welcome, " << playerName << ", to Game 1." <<endl;
+    cout << "Welcome, " << playername << ", to Game 1." <<endl;
+    cout << "THIS GAME IS GUESSING A NUMBER!!!!! " <<endl;
     cout << "You have 6 chances to guess the correct number depending on the difficulty selected to gain points!"<<endl;
     cout << "For easy difficulty, the number will be between 0 and 10."<<endl;
     cout << "For medium difficulty, the number will be between 0 and 20."<<endl;
     cout << "For hard difficulty, the number will be between 0 and 30."<<endl;
-    cout << "You will earn 1, 3, and 5 points respectively for each difficulties."<<endl;
-    cout << "But get all 6 guesses wrong, and you lose 5 points."<<endl;
+    cout << "You will earn 3, 4, and 5 points respectively for each difficulties."<<endl;
     cout << "What are you waiting for, better get guessing!"<<endl;
 
     // Choose difficulty level
@@ -68,7 +68,7 @@ int game1(string playerName) {
             correct_guess = true;
         } else {
             num_wrong_guesses++;
-            cout << "Incorrect guess. ";
+            cout << "Incorrect guess. " <<endl;
 
             // Print the hangman
             cout << "  _____" << endl;
@@ -91,51 +91,25 @@ int game1(string playerName) {
     // Print the results of the game
     if (correct_guess) {
         cout << "Congratulations!!! 😀 You guessed the number in " << num_guesses << " tries." << endl;
-        cout << "You can see your game result in game1_result.txt file."<<endl;
         num_wrong_guesses += 1;// to make it print correct guess in result
         
         // Reward player with points respective to difficulty level
         if (level == 1) {
-            points = 1;
-        } else if (level == 2) {
             points = 3;
+        } else if (level == 2) {
+            points = 4;
         } else if (level == 3) {
             points = 5;
         }
     } else {
         cout << "Sorry 😭, you didn't guess the number. The number was " << random_num << "." << endl;
-        cout << "You can see your game result in game1_result.txt file."<<endl;
-        points = -5;
     }
 
-    // Save the results of the game to a file
-    ofstream file("game1_results.txt");
-    if (!file) {
-        cout << "Error: Could not open game1_results.txt for writing." << endl;
-        //return 1;
-    }
-    if (correct_guess){
-        file << "Congratulations!!! 😀 You won this game!!!" <<endl;
-    }
-    else{
-        file << "Sorry, you lost!!! 😭"<<endl; 
-    }
-    file << "Starting number: " << starting_num << endl;
-    file << "Ending number: " << ending_num << endl;
-    file << "Your guesses: ";
-    for (int i = 0; i < num_wrong_guesses; i++)
-    {
-        file << guesses[i] << ' ';
-    }
-    file << endl;
-    file << "Random number: " << random_num << endl; 
-    file << "Points earned: " << points << endl;
-    file.close();
     delete[] guesses;
-    //return 0;
     if (correct_guess){
-        return 1;
+        return points;
     }
     else{
         return 0;
     }
+}
