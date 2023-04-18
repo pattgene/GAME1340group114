@@ -3,6 +3,6 @@
 #ifndef GAME1_H
 #define GAME1_H
 
-int game1();
+int game1(std::string playername);
 
 #endif
