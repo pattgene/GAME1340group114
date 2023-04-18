@@ -27,6 +27,6 @@ void deal_card(vector<Card>& deck, vector<string>& hand, int& score);
 
 void display_hand(vector<string>& hand, int& score);
 
-int game2(std::string playerName);
+int game2(std::string playername);
 
 #endif
