@@ -36,7 +36,7 @@ int game3(string playername) {
             cout << "┏━━━┳━━━┳━━━┓" << endl;
             cout << "┃ " << emojis[rand() % 10] << "┃ " << emojis[rand() % 10] << "┃ " << emojis[rand() % 10] << "┃" << endl;
             cout << "┗━━━┻━━━┻━━━┛" << endl;
-            cout << "Keep Pressing ENTER to stop the reels!";
+            cout << "Press ENTER to keep spinning the reels!";
             cin.get();
         }
         cout << "\033[2J\033[1;1H";
