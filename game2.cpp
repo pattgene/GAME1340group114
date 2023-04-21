@@ -10,9 +10,9 @@ void deal_card(vector<Card>& deck, vector<string>& hand, int& score) {
     Card card = deck.back();
     deck.pop_back();
     if (card.rank == "Ace (1)" || card.rank == "Ace (11)") {
-        if (score + card.value <= 21) {
-            score += card.value;
-            hand.push_back(card.rank);
+        if (score + 11 <= 21) {
+            score += 11;
+            hand.push_back("Ace (11)");
         } else {
             score += 1;
             hand.push_back("Ace (1)");
