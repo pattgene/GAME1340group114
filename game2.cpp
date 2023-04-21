@@ -9,6 +9,7 @@ void shuffle_deck(vector<Card>& deck) {
 void deal_card(vector<Card>& deck, vector<string>& hand, int& score) {
     Card card = deck.back();
     deck.pop_back();
+    // Assigns value of Ace to be 1 or 11
     if (card.rank == "Ace (1)" || card.rank == "Ace (11)") {
         if (score + 11 <= 21) {
             score += 11;
@@ -32,10 +33,10 @@ void display_hand(vector<string>& hand, int& score) {
 }
 
 int game2(std::string playername) {
-    cout << "Welcome, " << playername << ", to Game 1." <<endl;
+    cout << "Welcome, " << playername << ", to Game 2." <<endl;
     cout << "THIS GAME IS BLACK JACK!!!!! " <<endl;
     cout << "You have to win our CASINO BOSS" <<endl;
-    cout << "Who get close to 21 first, win the game" <<endl;
+    cout << "Whoever gets closest to 21 without going over it, wins the game" <<endl;
     cout << "GOOD LUCK!!!" <<endl;
     vector<Card> deck_copy = deck;
     shuffle_deck(deck_copy);
@@ -53,6 +54,7 @@ int game2(std::string playername) {
 
     while (player_score < 21) {
         char choice;
+        // Asks player whether they want to draw another card
         cout << "Hit or stand? (H/S): ";
         cin >> choice;
         if (choice == 'H' || choice == 'h') {
