@@ -9,8 +9,18 @@ void shuffle_deck(vector<Card>& deck) {
 void deal_card(vector<Card>& deck, vector<string>& hand, int& score) {
     Card card = deck.back();
     deck.pop_back();
-    hand.push_back(card.rank);
-    score += card.value;
+    if (card.rank == "Ace (1)" || card.rank == "Ace (11)") {
+        if (score + card.value <= 21) {
+            score += card.value;
+            hand.push_back(card.rank);
+        } else {
+            score += 1;
+            hand.push_back("Ace (1)");
+        }
+    } else {
+        hand.push_back(card.rank);
+        score += card.value;
+    }
 }
 
 void display_hand(vector<string>& hand, int& score) {
