@@ -1,5 +1,26 @@
 #include "game2.h"
 
+
+int main() {
+    cout << "      ___________ \n";
+    cout << "     |  _______  |\n";
+    cout << "     | |A      | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | | Black | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | |_______| |\n";
+    cout << "     |  _______  |\n";
+    cout << "     | |10     | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | | Jack  | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | |_______| |\n";
+    cout << "     |           |\n";
+    cout << "     |  DEALER   |\n";
+    
+
+    return 0;
+}
 void shuffle_deck(vector<Card>& deck) {
     random_device rd;
     mt19937 g(rd());
