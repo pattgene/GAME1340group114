@@ -1,4 +1,4 @@
-//MAIN
+//MAIN//edit function before
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
