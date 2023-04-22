@@ -116,14 +116,17 @@ int main() {
         } else if (selected_color == "game2") {
             print_loading("game2");
             colors.erase(remove(colors.begin(), colors.end(), "game2"), colors.end());
+            // if you guys want to connect to other game in this line
             game2_played = true;
             
         } else if (selected_color == "game3") {
             print_loading("game3");
             colors.erase(remove(colors.begin(), colors.end(), "game3"), colors.end());
+            //If you guys want to connect to other game in this line
             game3_played = true;
         } else if (selected_color == "game1") {
             print_loading("game1");
+            // if you want to connect other game in this line
             colors.erase(remove(colors.begin(), colors.end(), "game1"), colors.end());
             game1_played = true;
             // player_points -= game1();
