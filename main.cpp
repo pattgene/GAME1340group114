@@ -7,8 +7,70 @@
 #include <algorithm>
 #include <thread>
 #include <list>
+#include <fstream>
 
 using namespace std;
+struct Score {
+    string name;
+    int points;
+};
+
+void save_score(vector<Score>& scores, string name, int points) {
+    bool found = false;
+    for (Score& score : scores) {
+        if (score.name == name) {
+            score.points = points;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        scores.push_back({name, points});
+    }
+}
+
+
+void display_scores(vector<Score>& scores) {
+    cout << "SCOREBOARD" << endl;
+    cout << "----------" << endl;
+    for (Score score : scores) {
+        cout << score.name << ": " << score.points << endl;
+    }
+}
+
+void save_scores_to_file(vector<Score>& scores, string filename) {
+    ofstream outfile(filename);
+    for (Score score : scores) {
+        outfile << score.name << "," << score.points << endl;
+    }
+    outfile.close();
+}
+
+void load_scores_from_file(vector<Score>& scores, string filename) {
+    ifstream infile(filename);
+    if (infile.is_open()) {
+        string line;
+        while (getline(infile, line)) {
+            size_t pos = line.find(",");
+            if (pos != string::npos) {
+                string name = line.substr(0, pos);
+                int points = stoi(line.substr(pos + 1));
+                bool found = false;
+                for (Score& score : scores) {
+                    if (score.name == name) {
+                        score.points = points;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    scores.push_back({name, points});
+                }
+            }
+        }
+        infile.close();
+    }
+}
 
 void print_loading(string game_name) {
     cout << "Loading";
@@ -27,7 +89,7 @@ void print_loading(string game_name) {
 }
 
 void print_box(vector<string> colors, int index) {
-    int box_width = 60;
+    int box_width = 80;
     int arrow_pos = index * (box_width / colors.size()) + (box_width / (2 * colors.size()));
     
     cout << "  +";
@@ -66,7 +128,11 @@ void print_box(vector<string> colors, int index) {
 bool game1_played = false;
 bool game2_played = false;
 bool game3_played = false;
+
+
+
 int main() {
+    vector<Score> scores;
     cout << "CASINO" << endl;
 
     string player_name;
@@ -116,17 +182,14 @@ int main() {
         } else if (selected_color == "game2") {
             print_loading("game2");
             colors.erase(remove(colors.begin(), colors.end(), "game2"), colors.end());
-            // if you guys want to connect to other game in this line
             game2_played = true;
             
         } else if (selected_color == "game3") {
             print_loading("game3");
             colors.erase(remove(colors.begin(), colors.end(), "game3"), colors.end());
-            //If you guys want to connect to other game in this line
             game3_played = true;
         } else if (selected_color == "game1") {
             print_loading("game1");
-            // if you want to connect other game in this line
             colors.erase(remove(colors.begin(), colors.end(), "game1"), colors.end());
             game1_played = true;
             // player_points -= game1();
@@ -145,6 +208,10 @@ int main() {
             spin_again = false;
         }
     }
+    save_score(scores, player_name, player_points);
+    save_scores_to_file(scores, "scores.txt");
+    load_scores_from_file(scores, "scores.txt");
+    display_scores(scores);
 
     return 0;
 }
