@@ -1,11 +1,15 @@
+//MAIN
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
 #include <chrono>
+#include <algorithm>
 #include <thread>
+#include <list>
 
 using namespace std;
+
 void print_loading(string game_name) {
     cout << "Loading";
     for (int i = 0; i < 3; i++) {
@@ -22,23 +26,11 @@ void print_loading(string game_name) {
     cout << endl << "Welcome to " << game_name << endl;
 }
 
-int main() {
-    cout << "CASINO" << endl;
-    string player_name;
-    cout << "Enter your name: ";
-    getline(cin, player_name);
-    int player_points = 100;
-    cout << "Welcome, " << player_name << "! You have " << player_points << " points." << endl;
-    cout << "Press Enter to spin the wheel...";
-    cin.ignore();
-    srand(time(NULL));
-    vector<string> colors = {"game1", "game2", "game3", "Sweet spin", "Jackpot", "Zonk"};
-    int index = rand() % colors.size();
-    string selected_color = colors[index];
-    int box_width = 40;
+void print_box(vector<string> colors, int index) {
+    int box_width = 60;
     int arrow_pos = index * (box_width / colors.size()) + (box_width / (2 * colors.size()));
     
-    cout << "+";
+    cout << "  +";
     for (int i = 0; i < box_width - 2; i++) {
         cout << "-";
     }
@@ -46,12 +38,12 @@ int main() {
     
     for (int i = 0; i < colors.size(); i++) {
         int item_pos = i * (box_width / colors.size()) + (box_width / (2 * colors.size()));
-        cout << "|";
+        cout << "  |";
         for (int j = 0; j < box_width - 2; j++) {
             if (j >= arrow_pos - 5 && j < arrow_pos + 6 && i == index) {
                 if (j == arrow_pos - 2) {
-                    cout << "^ " << selected_color;
-                    j += selected_color.size() + 1;
+                    cout << "^ " << colors[index];
+                    j += colors[index].size() + 1;
                 } else {
                     cout << " ";
                 }
@@ -64,48 +56,92 @@ int main() {
         cout << "|" << endl;
     }
     
-    cout << "+";
+    cout << "  +";
     for (int i = 0; i < box_width - 2; i++) {
         cout << "-";
     }
     cout << "+" << endl;
+}
 
-   
+bool game1_played = false;
+bool game2_played = false;
+bool game3_played = false;
+int main() {
+    cout << "CASINO" << endl;
+
+    string player_name;
+    cout << "Enter your name: ";
+    getline(cin, player_name);
+
+    int player_points = 10000;
+    cout << "Welcome, " << player_name << "! You have " << player_points << " points." << endl;
+    cout << "You can spin the wheel once. Each spin costs 50 points." << endl;
     
-    cout << "You spun: " << selected_color << endl;
-if (selected_color == "Jackpot") {
-    string chsgme;
-    cout << "Choose between game1, game2 or game 3: ";
-    getline(cin,chsgme);
-    cout << "You choose: " << chsgme << endl;
-    if (chsgme == "game1"){
-        selected_color = "game1";
+    bool spin_again = true;
+    string last_color = "";  
+    while (spin_again) {
+        cout << "You currently have " << player_points << " points." << endl;
+        cout << "Press Enter to spin the wheel...";
+        cin.ignore();
+
+        // Deduct 50 points for spinning the wheel
+        player_points -= 50;
+        cout << endl << "You now have " << player_points << " points." << endl;
+
+        srand(time(NULL));
+        
+        vector<string> colors = {"Minus", "Plus"};
+        if (!game1_played) {
+            colors.push_back("game1");
+        }
+        if (!game2_played) {
+            colors.push_back("game2");
+        }
+        if (!game3_played) {
+            colors.push_back("game3");
+        }
+
+        int index = rand() % colors.size();
+        string selected_color = colors[index];
+        
+        print_box(colors, index);
+        cout << endl << "You spun: " << selected_color << endl;
+
+        if (selected_color == "Minus") {
+            player_points -= 50;
+            cout << "Nice try, you lost 50 points! You now have " << player_points << " points." << endl;
+        } else if (selected_color == "Extra Money") {
+            player_points += 100;
+            cout << "Congrats! You won 100 points! You now have " << player_points << " points." << endl;
+        } else if (selected_color == "game2") {
+            print_loading("game2");
+            colors.erase(remove(colors.begin(), colors.end(), "game2"), colors.end());
+            game2_played = true;
+            
+        } else if (selected_color == "game3") {
+            print_loading("game3");
+            colors.erase(remove(colors.begin(), colors.end(), "game3"), colors.end());
+            game3_played = true;
+        } else if (selected_color == "game1") {
+            print_loading("game1");
+            colors.erase(remove(colors.begin(), colors.end(), "game1"), colors.end());
+            game1_played = true;
+            // player_points -= game1();
+        }
+
+        if (player_points >= 50) {
+            cout << "Press Enter to spin the wheel again, or type 'done' to exit." << endl;
+            string input;
+            getline(cin, input);
+            if (input == "done") {
+                cout << "Game over! You finished with " << player_points << " points." << endl;
+                spin_again = false;
+            }
+        } else {
+            cout << "You do not have enough points to spin again. Game over!" << endl;
+            spin_again = false;
+        }
     }
-    else if (chsgme == "game2"){
-        selected_color = "game2";
-    } 
-    else if (chsgme == "game3"){
-        selected_color = "game3";
-    }
-}
-        //if game 1 go game 1 game 2 go game 2 game 3 or game3
-if (selected_color == "Zonk") {
-    player_points -= 50;
-    cout << "Nice try, you lost 50 points! You now have " << player_points << " points." << endl;
-} else if (selected_color == "+ 50 point") {
-    player_points += 50;
-    cout << "Congrats! You won 50 points! You now have " << player_points << " points." << endl;
-} else if (selected_color == "game2"){
-    print_loading("game2");
-} else if (selected_color == "game3"){
-    print_loading("game3");
-} else if (selected_color == "game1"){
-    print_loading("game1");
-}
 
     return 0;
 }
-//instruction ga boleh dpuble pt + game 1
-
-
-
