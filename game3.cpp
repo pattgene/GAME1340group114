@@ -11,20 +11,18 @@ int game3(string playername) {
     cout << "Otherwise, you will lose everything" << endl;
     cout << "Press ENTER to spin the reels! ";
     srand(time(0));
-    string* emojis = new string[10];
+    string* emojis = new string[8];
     emojis[0] = "🍎";
     emojis[1] = "🍊";
     emojis[2] = "🍇";
     emojis[3] = "🍒";
-    emojis[4] = "🍓";
-    emojis[5] = "🍋";
-    emojis[6] = "🍉";
-    emojis[7] = "🍌";
-    emojis[8] = "🍑";
-    emojis[9] = "🃏";
-    string slot1 = emojis[rand() % 10];
-    string slot2 = emojis[rand() % 10];
-    string slot3 = emojis[rand() % 10];
+    emojis[4] = "🍋";
+    emojis[5] = "🍉";
+    emojis[6] = "🍌";
+    emojis[7] = "🃏";
+    string slot1 = emojis[rand() % 8];
+    string slot2 = emojis[rand() % 8];
+    string slot3 = emojis[rand() % 8];
     if (cin.get() == '\n') {
         for(int i = 0; i < 10; i++) {
             cout << "\033[2J\033[1;1H";
@@ -34,7 +32,7 @@ int game3(string playername) {
             }
             cout << endl;
             cout << "┏━━━┳━━━┳━━━┓" << endl;
-            cout << "┃ " << emojis[rand() % 10] << "┃ " << emojis[rand() % 10] << "┃ " << emojis[rand() % 10] << "┃" << endl;
+            cout << "┃ " << emojis[rand() % 8] << "┃ " << emojis[rand() % 8] << "┃ " << emojis[rand() % 8] << "┃" << endl;
             cout << "┗━━━┻━━━┻━━━┛" << endl;
             cout << "Press ENTER to keep spinning the reels!";
             cin.get();
@@ -43,7 +41,7 @@ int game3(string playername) {
         cout << "┏━━━┳━━━┳━━━┓" << endl;
         cout << "┃ " << slot1 << "┃ " << slot2 << "┃ " << slot3 << "┃" << endl;
         cout << "┗━━━┻━━━┻━━━┛" << endl;
-        if (slot1 == slot2 && slot2 == slot3) {
+        if ((slot1 == slot2 && slot2 == slot3) || (slot1 == slot2 && slot3 == "🃏") || (slot1 == slot3 && slot2 == "🃏") || (slot2 == slot3 && slot1 == "🃏")) {
             cout << "Congratulations, you won 4 points!" << endl;
             cout << "Thanks for playing the Fruit Slot Machine!" << endl;
             delete[] emojis;
