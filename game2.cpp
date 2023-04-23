@@ -78,6 +78,11 @@ int game2(std::string playername) {
         // Asks player whether they want to draw another card
         cout << "Hit or stand? (H/S): ";
         cin >> choice;
+        // Prevents any unwanted input that might cause errors
+        while (!(choice == 'H' || choice == 'h' || choice == 'S' || choice == 's')) {
+            cout << "Invalid input, please try again.";
+            cout << "Hit or stand? (H/S): ";
+            cin >> choice;
         if (choice == 'H' || choice == 'h') {
             deal_card(deck_copy, player_hand, player_score);
             display_hand(player_hand, player_score);
