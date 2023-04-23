@@ -7,4 +7,18 @@ Members
 3. Lie Warren Leander - 3036094306
 4. gene
 
+HANGMAN
+
+In this variant of game, instead of guessing a word, the player is challenged with guessing a number. The game starts with an instruction that explains the rules and objectives of the game to the player. The player is then prompted to select a difficulty level, which determines the range of numbers that the hidden number will be selected from. The player has a limited number of guesses to correctly guess the number, and each incorrect guess results in a part of a hangman being drawn on the screen. The game also includes a hint system that provides a clue after two incorrect guesses have been made. The hint reveals whether the number is odd or even, which can help the player narrow down their guesses and increase their chances of success. At the end of the game, the player is awarded points based on the difficulty level.
+
+
+BLACKJACK
+
+This game is played between the player and the dealer (the computer). The goal of the game is to get a hand that is as close to 21 as possible without going over. The game starts by shuffling a standard 52-card deck and dealing two cards each to the player and the dealer. The player's cards are displayed along with their current score. The player is then given the option to draw additional cards ("hit") or to stand with their current hand. Once the player has decided to stand, the dealer's hand is revealed, and additional cards are drawn for the dealer until their score is at least 17. The winner is then determined by comparing the scores of the player and the dealer. The game includes an Ace card, which can have a value of 1 or 11, depending on the current score of the player. The game also includes a simple scoring system in which the value of each card is added to the player's score.
+
+SLOT MACHINE
+
+The game is played by spinning three reels containing different fruits and a wild card. The player wins points if they get three of the same fruit OR 2 of the same fruit and a wild card. This will increase the chances of winning the game. The game starts by displaying a welcome message and instructions for the player. The player is then prompted to press ENTER to spin the reels. The game then displays an animation of the reels spinning, with each reel displaying a random fruit. The animation is updated with each iteration, and the player is prompted to press ENTER to continue spinning the reels. Once the animation is complete, the game displays the final results of the spin. 
+
+
 
