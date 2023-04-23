@@ -7,7 +7,7 @@ using namespace std;
 int game3(string playername) {
     cout << "Welcome, " << playername << ", to Game 3." <<endl;
     cout << "Welcome to the Fruit Slot Machine!" << endl;
-    cout << "If you get 3 of the same fruit, you will win 4 points back" << endl;
+    cout << "If you get 3 of the same fruit OR 2 of the same fruit and a wildcard, you will win 4 points back" << endl;
     cout << "Otherwise, you will lose everything" << endl;
     cout << "Press ENTER to spin the reels! ";
     srand(time(0));
@@ -21,7 +21,7 @@ int game3(string playername) {
     emojis[6] = "🍉";
     emojis[7] = "🍌";
     emojis[8] = "🍑";
-    emojis[9] = "🍐";
+    emojis[9] = "🃏";
     string slot1 = emojis[rand() % 10];
     string slot2 = emojis[rand() % 10];
     string slot3 = emojis[rand() % 10];
