@@ -8,6 +8,9 @@
 #include <thread>
 #include <list>
 #include <fstream>
+#include "game1.h"
+#include "game2.h"
+#include "game3.h"
 
 using namespace std;
 struct Score {
@@ -39,7 +42,7 @@ void display_scores(vector<Score>& scores) {
 }
 
 void save_scores_to_file(vector<Score>& scores, string filename) {
-    ofstream outfile(filename);
+    ofstream outfile(filename, ios::app); //append
     for (Score score : scores) {
         outfile << score.name << "," << score.points << endl;
     }
@@ -139,9 +142,9 @@ int main() {
     cout << "Enter your name: ";
     getline(cin, player_name);
 
-    int player_points = 10000;
+    int player_points = 10;
     cout << "Welcome, " << player_name << "! You have " << player_points << " points." << endl;
-    cout << "You can spin the wheel once. Each spin costs 50 points." << endl;
+    cout << "You can spin the wheel once. Each spin costs 2 points." << endl;
     
     bool spin_again = true;
     string last_color = "";  
@@ -151,7 +154,7 @@ int main() {
         cin.ignore();
 
         // Deduct 50 points for spinning the wheel
-        player_points -= 50;
+        player_points -= 2;
         cout << endl << "You now have " << player_points << " points." << endl;
 
         srand(time(NULL));
@@ -174,28 +177,31 @@ int main() {
         cout << endl << "You spun: " << selected_color << endl;
 
         if (selected_color == "Minus") {
-            player_points -= 50;
-            cout << "Nice try, you lost 50 points! You now have " << player_points << " points." << endl;
-        } else if (selected_color == "Extra Money") {
-            player_points += 100;
-            cout << "Congrats! You won 100 points! You now have " << player_points << " points." << endl;
+            player_points -= 2;
+            cout << "Nice try, you lost 2 points! You now have " << player_points << " points." << endl;
+        } else if (selected_color == "Plus") {
+            player_points += 5;
+            cout << "Congrats! You won 5 points! You now have " << player_points << " points." << endl;
         } else if (selected_color == "game2") {
             print_loading("game2");
+            player_points += game2(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "game2"), colors.end());
             game2_played = true;
             
         } else if (selected_color == "game3") {
             print_loading("game3");
+            player_points += game3(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "game3"), colors.end());
             game3_played = true;
         } else if (selected_color == "game1") {
             print_loading("game1");
+            player_points += game1(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "game1"), colors.end());
             game1_played = true;
             // player_points -= game1();
         }
 
-        if (player_points >= 50) {
+        if (player_points >= 2) {
             cout << "Press Enter to spin the wheel again, or type 'done' to exit." << endl;
             string input;
             getline(cin, input);
