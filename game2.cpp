@@ -45,10 +45,10 @@ void deal_card(vector<Card>& deck, vector<string>& hand, int& score) {
     }
 }
 
-void display_hand(vector<string>& hand, int& score) {
-    cout << "Your hand: ";
-    for (int i = 0; i < int(hand.size()); i++) {
-        cout << hand[i] << " ";
+void display_hand(const string& label, const vector<string>& hand, int score) {
+    cout << label << ": ";
+    for (const string& card : hand) {
+        cout << card << " ";
     }
     cout << endl << "Your score: " << score << endl;
 }
@@ -80,7 +80,7 @@ int game2(std::string playername) {
     vector<string> player_hand2;
     int player_score2 = 0;
 
-    display_hand(player_hand, player_score);
+    display_hand("", player_hand, player_score);
     
     // Asks player if they would like to split their hand
     if (can_split(player_hand)) {
@@ -133,7 +133,7 @@ int game2(std::string playername) {
                 }
             }
         }
-        // Calculating winner for split hand deck
+        // Calculating winner for either split hand or normal deck
         int points = 0;
         for (int hand_idx = 0; hand_idx < int(hands.size()); ++hand_idx) {
             string hand_label = has_split ? (hand_idx == 0 ? "Your hand" : "Your split hand") : "Your hand";
@@ -167,7 +167,7 @@ int game2(std::string playername) {
             cin >> choice;
         if (choice == 'H' || choice == 'h') {
             deal_card(deck_copy, player_hand, player_score);
-            display_hand(player_hand, player_score);
+            display_hand("", player_hand, player_score);
         } else {
             break;
         }
