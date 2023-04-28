@@ -36,6 +36,7 @@ int game3(string playername) {
             cout << "┗━━━┻━━━┻━━━┛" << endl;
             cout << "Press ENTER to keep spinning the reels!";
             cin.get();
+            cin.ignore();
         }
         cout << "\033[2J\033[1;1H";
         cout << "┏━━━┳━━━┳━━━┓" << endl;
