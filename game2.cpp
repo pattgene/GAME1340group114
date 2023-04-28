@@ -87,6 +87,7 @@ int game2(std::string playername) {
         char split_choice;
         cout << "You have a pair. Would you like to split? (Y/N): ";
         cin >> split_choice;
+        cin.ignore();
         while (!(split_choice == 'Y' || split_choice == 'y' || split_choice == 'N' || split_choice == 'n')) {
             cout << "Invalid input, please try again.";
             cout << "Split? (Y/N): ";
@@ -120,6 +121,7 @@ int game2(std::string playername) {
                 char choice;
                 cout << hand_label << "Hit or stand? (H/S): ";
                 cin >> choice;
+                cin.ignore();
                 while (!(choice == 'H' || choice == 'h' || choice == 'S' || choice == 's')) {
                     cout << "Invalid input, please try again.";
                     cout << hand_label << "Hit or stand? (H/S): ";
@@ -160,6 +162,7 @@ int game2(std::string playername) {
         // Asks player whether they want to draw another card
         cout << "Hit or stand? (H/S): ";
         cin >> choice;
+        cin.ignore();
         // Prevents any unwanted input that might cause errors
         while (!(choice == 'H' || choice == 'h' || choice == 'S' || choice == 's')) {
             cout << "Invalid input, please try again.";
