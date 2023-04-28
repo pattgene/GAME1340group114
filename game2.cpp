@@ -165,6 +165,7 @@ int game2(std::string playername) {
             cout << "Invalid input, please try again.";
             cout << "Hit or stand? (H/S): ";
             cin >> choice;
+        }
         if (choice == 'H' || choice == 'h') {
             deal_card(deck_copy, player_hand, player_score);
             display_hand("", player_hand, player_score);
