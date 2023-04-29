@@ -5,7 +5,7 @@ Members
 1. Cia Hannah Olivia - 3036037334
 2. Susabda Joshua - 3036029739
 3. Lie Warren Leander - 3036094306
-4. gene
+4. Phurtivilai Patt - 3036085226
 
 ### HANGMAN
 
