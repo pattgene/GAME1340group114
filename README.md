@@ -7,6 +7,10 @@ Members
 3. Lie Warren Leander - 3036094306
 4. Phurtivilai Patt - 3036085226
 
+### MAIN
+
+This is the central hub where players can access the different mini-games. The player starts with 10 points, and each spin of the wheel costs 2 points. The wheel can land on "Minus," "Plus," or one of the available mini-games. If it lands on "Minus," the player loses 2 points; if it lands on "Plus," the player wins 5 points. If it lands on a mini-game, the player can win more points based on their performance in the mini-game. The player can keep spinning the wheel as long as they have at least 2 points. The final score will be displayed on the scoreboard. Once a mini-game has been played, it cannot be played again in the same session.
+
 ### HANGMAN
 
 In this variant of game, instead of guessing a word, the player is challenged with guessing a number. The game starts with an instruction that explains the rules and objectives of the game to the player. The player is then prompted to select a difficulty level, which determines the range of numbers that the hidden number will be selected from. The player has a limited number of guesses to correctly guess the number, and each incorrect guess results in a part of a hangman being drawn on the screen. The game also includes a hint system that provides a clue after two incorrect guesses have been made. The hint reveals whether the number is odd or even, which can help the player narrow down their guesses and increase their chances of success. At the end of the game, the player is awarded points based on the difficulty level.
