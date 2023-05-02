@@ -179,7 +179,7 @@ int main() {
             colors.push_back("Hangman");
         }
         if (!game2_played) {
-            colors.push_back("BlackJack");
+            colors.push_back("BJ");
         }
         if (!game3_played) {
             colors.push_back("Slot");
@@ -197,19 +197,19 @@ int main() {
         } else if (selected_color == "Plus") {
             player_points += 5;
             cout << "Congrats! You won 5 points! You now have " << player_points << " points." << endl;
-        } else if (selected_color == "game2") {
-            print_loading("game2");
+        } else if (selected_color == "BJ") {
+            print_loading("BJ");
             player_points += game2(player_name);
-            colors.erase(remove(colors.begin(), colors.end(), "Blackjack"), colors.end());
+            colors.erase(remove(colors.begin(), colors.end(), "BJ"), colors.end());
             game2_played = true;
             
-        } else if (selected_color == "game3") {
-            print_loading("game3");
+        } else if (selected_color == "Slot") {
+            print_loading("Slot");
             player_points += game3(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "Slot"), colors.end());
             game3_played = true;
-        } else if (selected_color == "game1") {
-            print_loading("game1");
+        } else if (selected_color == "Hangman") {
+            print_loading("Hangman");
             player_points += game1(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "Hangman"), colors.end());
             game1_played = true;
