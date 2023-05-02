@@ -127,6 +127,20 @@ void print_box(vector<string> colors, int index) {
     }
     cout << "+" << endl;
 }
+void display_rules() {
+    cout << "CASINO GAME RULES" << endl;
+    cout << "-----------------" << endl;
+    cout << "1. You start with 10 points." << endl;
+    cout << "2. Each spin of the wheel costs 2 points." << endl;
+    cout << "3. The wheel can land on 'Minus', 'Plus', or one of the mini-games." << endl;
+    cout << "4. If you land on 'Minus', you lose 2 points." << endl;
+    cout << "5. If you land on 'Plus', you win 5 points." << endl;
+    cout << "6. If you land on a mini-game, you'll have a chance to win more points." << endl;
+    cout << "7. You can keep spinning the wheel as long as you have at least 2 points." << endl;
+    cout << "8. Your final score will be displayed on the scoreboard." << endl;
+    cout << "9. Once you've played a mini-game, you cannot play it again in the same session." << endl;
+    cout << endl;
+}
 
 bool game1_played = false;
 bool game2_played = false;
@@ -137,6 +151,7 @@ bool game3_played = false;
 int main() {
     vector<Score> scores;
     cout << "CASINO" << endl;
+    display_rules();
 
     string player_name;
     cout << "Enter your name: ";
@@ -161,13 +176,13 @@ int main() {
         
         vector<string> colors = {"Minus", "Plus"};
         if (!game1_played) {
-            colors.push_back("game1");
+            colors.push_back("Hangman");
         }
         if (!game2_played) {
-            colors.push_back("game2");
+            colors.push_back("BlackJack");
         }
         if (!game3_played) {
-            colors.push_back("game3");
+            colors.push_back("Slot");
         }
 
         int index = rand() % colors.size();
@@ -185,18 +200,18 @@ int main() {
         } else if (selected_color == "game2") {
             print_loading("game2");
             player_points += game2(player_name);
-            colors.erase(remove(colors.begin(), colors.end(), "game2"), colors.end());
+            colors.erase(remove(colors.begin(), colors.end(), "Blackjack"), colors.end());
             game2_played = true;
             
         } else if (selected_color == "game3") {
             print_loading("game3");
             player_points += game3(player_name);
-            colors.erase(remove(colors.begin(), colors.end(), "game3"), colors.end());
+            colors.erase(remove(colors.begin(), colors.end(), "Slot"), colors.end());
             game3_played = true;
         } else if (selected_color == "game1") {
             print_loading("game1");
             player_points += game1(player_name);
-            colors.erase(remove(colors.begin(), colors.end(), "game1"), colors.end());
+            colors.erase(remove(colors.begin(), colors.end(), "Hangman"), colors.end());
             game1_played = true;
             // player_points -= game1();
         }
