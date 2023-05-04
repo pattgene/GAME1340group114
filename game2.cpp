@@ -1,26 +1,6 @@
 #include "game2.h"
 
 
-int main() {
-    cout << "      ___________ \n";
-    cout << "     |  _______  |\n";
-    cout << "     | |A      | |\n";
-    cout << "     | |       | |\n";
-    cout << "     | | Black | |\n";
-    cout << "     | |       | |\n";
-    cout << "     | |_______| |\n";
-    cout << "     |  _______  |\n";
-    cout << "     | |10     | |\n";
-    cout << "     | |       | |\n";
-    cout << "     | | Jack  | |\n";
-    cout << "     | |       | |\n";
-    cout << "     | |_______| |\n";
-    cout << "     |           |\n";
-    cout << "     |  DEALER   |\n";
-    
-
-    return 0;
-}
 void shuffle_deck(vector<Card>& deck) {
     random_device rd;
     mt19937 g(rd());
@@ -59,6 +39,21 @@ bool can_split(vector<string>& hand) {
 }
 
 int game2(std::string playername) {
+    cout << "      ___________ \n";
+    cout << "     |  _______  |\n";
+    cout << "     | |A      | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | | Black | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | |_______| |\n";
+    cout << "     |  _______  |\n";
+    cout << "     | |10     | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | | Jack  | |\n";
+    cout << "     | |       | |\n";
+    cout << "     | |_______| |\n";
+    cout << "     |           |\n";
+    cout << "     |  DEALER   |\n";
     cout << "Welcome, " << playername << ", to Game 2." <<endl;
     cout << "THIS GAME IS BLACK JACK!!!!! " <<endl;
     cout << "You have to win our CASINO BOSS" <<endl;
