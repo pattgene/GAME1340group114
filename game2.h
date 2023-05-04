@@ -25,7 +25,7 @@ void shuffle_deck(vector<Card>& deck);
 
 void deal_card(vector<Card>& deck, vector<string>& hand, int& score);
 
-void display_hand(const string& label, vector<string>& hand, int& score);
+void display_hand(const string& label, const vector<string>& hand, int score);
 
 bool can_split(vector<string>& hand);
 
