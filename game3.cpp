@@ -3,7 +3,9 @@
 #include <ctime>
 
 using namespace std;
-void print_fruit_slot_machine() {
+
+int game3(string playername) {
+    cout << "Welcome, " << playername << ", to Game 3." <<endl;
     cout <<
         " ____________________________\n"
         "|  ______   ______   ______  |\n"
@@ -21,11 +23,6 @@ void print_fruit_slot_machine() {
         "| |   [ENTER]   |==|         |\n"
         "|  ---------------           |\n"
         "|____________________________|\n";
-}
-
-int game3(string playername) {
-    cout << "Welcome, " << playername << ", to Game 3." <<endl;
-    print_fruit_slot_machine();
     cout << "Welcome to the Fruit Slot Machine!" << endl;
     cout << "If you get 3 of the same fruit, you will win 4 points back" << endl;
     cout << "Otherwise, you will lose everything" << endl;
