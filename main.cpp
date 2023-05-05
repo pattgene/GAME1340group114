@@ -13,12 +13,11 @@
 #include "game3.h"
 
 using namespace std;
-// Score structure to hold player name and points.
 struct Score {
     string name;
     int points;
 };
-// Save or update player's score in the scores vector.
+
 void save_score(vector<Score>& scores, string name, int points) {
     bool found = false;
     for (Score& score : scores) {
@@ -33,7 +32,7 @@ void save_score(vector<Score>& scores, string name, int points) {
     }
 }
 
-// Display all scores in the scores vector.
+
 void display_scores(vector<Score>& scores) {
     cout << "SCOREBOARD" << endl;
     cout << "----------" << endl;
@@ -41,7 +40,7 @@ void display_scores(vector<Score>& scores) {
         cout << score.name << ": " << score.points << endl;
     }
 }
-// Save scores to a file.
+
 void save_scores_to_file(vector<Score>& scores, string filename) {
     ofstream outfile(filename, ios::app); //append
     for (Score score : scores) {
@@ -49,7 +48,7 @@ void save_scores_to_file(vector<Score>& scores, string filename) {
     }
     outfile.close();
 }
-// Load scores from a file.
+
 void load_scores_from_file(vector<Score>& scores, string filename) {
     ifstream infile(filename);
     if (infile.is_open()) {
@@ -75,7 +74,7 @@ void load_scores_from_file(vector<Score>& scores, string filename) {
         infile.close();
     }
 }
-// Print a loading animation and welcome message.
+
 void print_loading(string game_name) {
     cout << "Loading";
     for (int i = 0; i < 3; i++) {
@@ -91,7 +90,7 @@ void print_loading(string game_name) {
     }
     cout << endl << "Welcome to " << game_name << endl;
 }
-// Print a box with an arrow pointing to the selected item.
+
 void print_box(vector<string> colors, int index) {
     int box_width = 80;
     int arrow_pos = index * (box_width / colors.size()) + (box_width / (2 * colors.size()));
@@ -128,7 +127,6 @@ void print_box(vector<string> colors, int index) {
     }
     cout << "+" << endl;
 }
-// Display the casino game rules.
 void display_rules() {
     cout << "CASINO GAME RULES" << endl;
     cout << "-----------------" << endl;
@@ -152,26 +150,26 @@ bool game3_played = false;
 
 int main() {
     vector<Score> scores;
-    cout << "CASINO" << endl;
+    cout << "Welcome to CASINO 114" <<endl;
+    cout << "🎰♥♣️♠️♤♧♥️♦️   ℂ𝔸𝕊𝕀ℕ𝕆 𝟙𝟙𝟜   ♣♠🎲🃏💸💵" << endl;
     display_rules();
-    // Get player name and initialize points.
+
     string player_name;
-    cout << "Enter your name: ";
+    cout << "🅴 🅽 🆃 🅴 🆁 🆈 🅾 🆄 🆁 🅽 🅰 🅼 🅴 : ";
     getline(cin, player_name);
 
     int player_points = 10;
-    cout << "Welcome, " << player_name << "! You have " << player_points << " points." << endl;
+    cout << "🅦 🅔 🅛 🅒 🅞 🅜 🅔 " << player_name << "! You have " << player_points << " points." << endl;
     cout << "You can spin the wheel once. Each spin costs 2 points." << endl;
     
     bool spin_again = true;
-    string last_color = ""; 
-     // Game loop: Spin the wheel, choose a game, and update points.
+    string last_color = "";  
     while (spin_again) {
         cout << "You currently have " << player_points << " points." << endl;
         cout << "Press Enter to spin the wheel...";
         cin.ignore();
 
-        // Deduct 2 points for spinning the wheel
+        // Deduct 50 points for spinning the wheel
         player_points -= 2;
         cout << endl << "You now have " << player_points << " points." << endl;
 
@@ -193,26 +191,26 @@ int main() {
         
         print_box(colors, index);
         cout << endl << "You spun: " << selected_color << endl;
-        // Play selected game and update points.
+
         if (selected_color == "Minus") {
             player_points -= 2;
-            cout << "Nice try, you lost 2 points! You now have " << player_points << " points." << endl;
+            cout << "Nice try,(ﾉಥ益ಥ)ﾉyou lost 2 points! You now have " << player_points << " points." << endl;
         } else if (selected_color == "Plus") {
             player_points += 5;
-            cout << "Congrats! You won 5 points! You now have " << player_points << " points." << endl;
+            cout << "Congrats! (≧ε≦) You won 5 points! You now have " << player_points << " points." << endl;
         } else if (selected_color == "BJ") {
-            print_loading("BJ");
+            print_loading("🅱 🅹");
             player_points += game2(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "BJ"), colors.end());
             game2_played = true;
             
         } else if (selected_color == "Slot") {
-            print_loading("Slot");
+            print_loading("🅢 🅛 🅞 🅣");
             player_points += game3(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "Slot"), colors.end());
             game3_played = true;
         } else if (selected_color == "Hangman") {
-            print_loading("Hangman");
+            print_loading("🅗 🅐 🅝 🅖 🅜 🅐 🅝");
             player_points += game1(player_name);
             colors.erase(remove(colors.begin(), colors.end(), "Hangman"), colors.end());
             game1_played = true;
@@ -232,7 +230,6 @@ int main() {
             spin_again = false;
         }
     }
-    // Save and display scores.
     save_score(scores, player_name, player_points);
     save_scores_to_file(scores, "scores.txt");
     load_scores_from_file(scores, "scores.txt");
