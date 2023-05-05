@@ -24,5 +24,15 @@ This game is played between the player and the dealer (the computer). The goal o
 
 The game is played by spinning three reels containing different fruits and a wild card. The player wins points if they get three of the same fruit OR 2 of the same fruit and a wild card. This will increase the chances of winning the game. The game starts by displaying a welcome message and instructions for the player. The player is then prompted to press ENTER to spin the reels. The game then displays an animation of the reels spinning, with each reel displaying a random fruit. The animation is updated with each iteration, and the player is prompted to press ENTER to continue spinning the reels. Once the animation is complete, the game displays the final results of the spin. 
 
+### HOW TO PLAY
+1. Download all files in your local computer.
+2. Change directory to all these files.
+3. type: make main in your command line
+4. type: ./main in your command line
 
+### ENJOY!!! 😉 
+
+
+### CODE DESCRIPTION
+https://docs.google.com/document/d/1yrbesYafdPebWbhMJ3PlTV5CTVd5Xft6wLgWL17_EGE/edit?usp=sharing
 
