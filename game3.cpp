@@ -67,7 +67,7 @@ int game3(string playername) {
             delete[] emojis;
             return 4;
         } else {
-            cout << "Sorry, you lost everything." << endl;
+            cout << "Sorry, you lost everything. ( ｡ •̀ ᴖ •́ ｡)💢  ୧(๑•̀ᗝ•́)૭" << endl;
             cout << "Thanks for playing the Fruit Slot Machine!" << endl;
             delete[] emojis;
             return 0;
