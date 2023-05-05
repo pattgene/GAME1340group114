@@ -32,6 +32,7 @@ int game1(string playername) {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input, try again (1 - Easy, 2 - Normal, 3 - Hard): ";
     }
+    
 
     // Set starting and ending numbers based on the difficulty level
     switch (level) {
@@ -61,6 +62,7 @@ int game1(string playername) {
     while (!correct_guess && num_wrong_guesses < max_wrong_guesses) {
         cout << "Guess the number: ";
         cin >> guess_num;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
         guesses[num_guesses] = guess_num;
         num_guesses++;
 
@@ -90,7 +92,7 @@ int game1(string playername) {
 
     // Print the results of the game
     if (correct_guess) {
-        cout << "Congratulations!!! 😀 You guessed the number in " << num_guesses << " tries." << endl;
+        cout << "Congratulations!!! (づ˶> ᵕ < ︎˶)づ❤︎ You guessed the number in " << num_guesses << " tries." << endl;
         num_wrong_guesses += 1;// to make it print correct guess in result
         
         // Reward player with points respective to difficulty level
@@ -102,7 +104,8 @@ int game1(string playername) {
             points = 5;
         }
     } else {
-        cout << "Sorry 😭, you didn't guess the number. The number was " << random_num << "." << endl;
+        cout << "Sorry, you didn't guess the number. The number was " << random_num << "." << endl;
+        cout << "(˵•̀⤙•́˵)૭"<<endl;
     }
 
     delete[] guesses;
