@@ -54,6 +54,7 @@ int game2(std::string playername) {
     cout << "     | |_______| |\n";
     cout << "     |           |\n";
     cout << "     |  DEALER   |\n";
+    cout << "      ----------- \n";
     cout << "Welcome, " << playername << ", to Game 2." <<endl;
     cout << "THIS GAME IS BLACK JACK!!!!! " <<endl;
     cout << "You have to win our CASINO BOSS" <<endl;
@@ -182,16 +183,16 @@ int game2(std::string playername) {
     }
     cout << endl << "Dealer's score: " << dealer_score<< endl;
     if (player_score > 21) {
-        cout << "Bust! You lose." << endl;
+        cout << "Bust! You lose. !!!!  ლ(ಠ益ಠლ) !!!!" << endl;
         return 0;
     } else if (dealer_score > 21) {
-        cout << "Dealer busts! You win." << endl;
+        cout << "Dealer busts! You win. !!!!૮ ˶ᵔ ᵕ ᵔ˶ ა!!!!" << endl;
         return 4;
     } else if (player_score > dealer_score) {
-        cout << "You win!" << endl;
+        cout << "You win! !!!!૮ ˶ᵔ ᵕ ᵔ˶ ა!!!!" << endl;
         return 4;
     } else if (dealer_score > player_score) {
-        cout << "You lose." << endl;
+        cout << "You lose. !!!!  ლ(ಠ益ಠლ) !!!!" << endl;
         return 0;
     } else {
         cout << "Draw" << endl;
